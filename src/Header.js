@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div><h1> Ganesh </h1></div>
+    <header className='tdl'>TO DO LIS </header>
   )
 }
 

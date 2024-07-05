@@ -1,5 +1,4 @@
 import Header from './Header';
-import './App.css';
 import Contaner from './Contaner';
 import Footer from './Footer';
 
@@ -7,11 +6,10 @@ function App() {
 
 
   return (
-<div>
-
+<div className='App'>
 <Header/>
 <Contaner/>
-<Footer/>
+<Footer/> 
 
 </div>
   );
