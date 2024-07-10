@@ -1,72 +1,64 @@
 import React, { useState } from 'react'
 import { FaTrashAlt } from "react-icons/fa";
-
-const Todolist = () => {
-
+export const Todolist = () => {
     const [list,setlist] = useState([
         {
             id:1,
-            work:"naan ganesh",
-            checked : true
+            hoby:"blender learn",
+            chaeck: true
         },
         {
             id:2,
-            work:"naan ganesh",
-            checked : false
+            hoby:"blender learn",
+            chaeck: false
         },
         {
             id:3,
-            work:"naan ganesh",
-            checked : true
-        },
-        {
-            id:4,
-            work:"naan ganesh",
-            checked : false
+            hoby:"blender learn",
+            chaeck: true
         },
     ])
+    // const [number,setnumber]= useState(10)
+    // function add()
+    // {
+    //     const num = number+1
+    //     setnumber(num)
+    // }
+    // function down()
+    // {
+    //     const num = number-1
+    //     setnumber(num)
+    // }
 
-    const  changefunction=(id)=>
-        {
-        
-            const listid = list.map((item) =>
-                 item.id === id ? {...item, checked :!item.checked} : item)
-            setlist(listid)
-            localStorage.setItem("todolist",JSON.stringify (list))
-           
-        }
-    function removeEvent (id)
+    function removelist(id)
     {
-
-        const newlist =list.filter((l)=> l.id !== id)
-        setlist(newlist)
-        localStorage.setItem("todolist",JSON.stringify (list))
+        const remove = list.filter((l) => l.id !==id) 
+        setlist(remove)
+        localStorage.setItem("todolist",JSON.stringify(remove))
     }
- 
-
+    function chnagefun(id)
+    {
+const change = list.map((l) => l.id===id ? {...l,chaeck:!l.chaeck}:l)
+setlist(change)
+    }
   return (
     <main>
-    {(list.length) ? (
+    {(list.length)?(
     <ul>
     {
-        list.map((l) => (
+        list.map((l)=>(
             <li className='item' key={l.id}>
-            <input className="cheakbox"
-            type="checkbox"
-            onChange={()=>changefunction(l.id)}
-            checked={l.checked} />
-            <label style={(l.checked)? {textDecoration:"line-through"}:null}
-             onDoubleClick={()=>changefunction(l.id)}>{l.work}</label>
-            <FaTrashAlt 
-            role="button"  
-            onClick={()=>removeEvent (l.id)
-            }
-            tabIndex="0"/>
-            </li>
+            <input type="checkbox"
+            onChange={()=>chnagefun(l.id)}
+            checked={l.chaeck} />
+            <label > {l.hoby}</label>
+            <FaTrashAlt role="button"
+            onClick={()=>removelist(l.id)}/></li>
+            
         ))
-    }</ul>
-) : <h2>your work is complete</h2>
     }
+    </ul>
+):<h1>list complete</h1>}
     </main>
   )
 }
