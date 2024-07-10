@@ -32,26 +32,31 @@ const Todolist = () => {
             const listid = list.map((item) =>
                  item.id === id ? {...item, checked :!item.checked} : item)
             setlist(listid)
+            localStorage.setItem("todolist",JSON.stringify (list))
+           
         }
     function removeEvent (id)
     {
 
         const newlist =list.filter((l)=> l.id !== id)
         setlist(newlist)
+        localStorage.setItem("todolist",JSON.stringify (list))
     }
-
+ 
 
   return (
     <main>
+    {(list.length) ? (
     <ul>
     {
         list.map((l) => (
             <li className='item' key={l.id}>
-            <input 
+            <input className="cheakbox"
             type="checkbox"
             onChange={()=>changefunction(l.id)}
             checked={l.checked} />
-            <label>{l.work}</label>
+            <label style={(l.checked)? {textDecoration:"line-through"}:null}
+             onDoubleClick={()=>changefunction(l.id)}>{l.work}</label>
             <FaTrashAlt 
             role="button"  
             onClick={()=>removeEvent (l.id)
@@ -60,6 +65,8 @@ const Todolist = () => {
             </li>
         ))
     }</ul>
+) : <h2>your work is complete</h2>
+    }
     </main>
   )
 }

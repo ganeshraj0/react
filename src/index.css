@@ -38,7 +38,10 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
+input
+{
+  accent-color: mediumblue;
+}
 main {
   width: 100%;
   display: flex;
