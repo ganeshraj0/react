@@ -1,6 +1,6 @@
 import Header from './Header';
-import Contaner from './Contaner';
 import Footer from './Footer';
+import Todolist from './Todolist';
 
 function App() {
 
@@ -8,7 +8,7 @@ function App() {
   return (
 <div className='App'>
 <Header/>
-<Contaner/>
+<Todolist/>
 <Footer/> 
 
 </div>
