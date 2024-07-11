@@ -9,13 +9,18 @@ export const Todolist = () => {
         },
         {
             id:2,
-            hoby:"blender learn",
+            hoby:"react learn",
             chaeck: false
         },
         {
             id:3,
-            hoby:"blender learn",
-            chaeck: true
+            hoby:"website learn",
+            chaeck: false
+        },
+        {
+            id:3,
+            hoby:"bio-tech learn",
+            chaeck: false
         },
     ])
     // const [number,setnumber]= useState(10)
@@ -40,6 +45,7 @@ export const Todolist = () => {
     {
 const change = list.map((l) => l.id===id ? {...l,chaeck:!l.chaeck}:l)
 setlist(change)
+localStorage.setItem("todolist",JSON.stringify(change))
     }
   return (
     <main>
@@ -51,7 +57,8 @@ setlist(change)
             <input type="checkbox"
             onChange={()=>chnagefun(l.id)}
             checked={l.chaeck} />
-            <label > {l.hoby}</label>
+            <label style={ (l.chaeck)? {textDecoration:"line-through" }:null} 
+            onDoubleClick={()=>chnagefun(l.id)} > {l.hoby}</label>
             <FaTrashAlt role="button"
             onClick={()=>removelist(l.id)}/></li>
             
